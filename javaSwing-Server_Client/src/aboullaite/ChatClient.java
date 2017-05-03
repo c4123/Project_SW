@@ -1,7 +1,6 @@
 package aboullaite;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -13,6 +12,14 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Observable;
 import java.util.Observer;
+
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 
 // Class to manage Client chat Box.
@@ -41,8 +48,10 @@ public class ChatClient {
                         BufferedReader reader = new BufferedReader(
                                 new InputStreamReader(socket.getInputStream()));
                         String line;
-                        while ((line = reader.readLine()) != null)
-                            notifyObservers(line);
+                        while ((line = reader.readLine()) != null){
+                          notifyObservers(line);
+                    
+                        }
                     } catch (IOException ex) {
                         notifyObservers(ex);
                     }
