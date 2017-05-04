@@ -40,8 +40,8 @@ public class clientThread extends Thread {
 			/*
 			 * Create input and output streams for this client.
 			 */
-			is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-			os = new PrintStream(clientSocket.getOutputStream());
+			is = new BufferedReader(new InputStreamReader(clientSocket.getInputStream(),"UTF8"));
+			os = new PrintStream(clientSocket.getOutputStream(),true,"UTF8");
 			String name;
 			while (true) {
 				os.println("enter your name");
