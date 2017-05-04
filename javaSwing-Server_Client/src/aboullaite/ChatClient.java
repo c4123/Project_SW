@@ -40,6 +40,7 @@ public class ChatClient {
         /** Create socket, and receiving thread */
         public void InitSocket(String server, int port) throws IOException {
             socket = new Socket(server, port);
+            new CurrentUser().socket = socket;
             //outputStream = socket.getOutputStream();
             os = new PrintStream(socket.getOutputStream(),true,"UTF8");
             Thread receivingThread = new Thread() {
