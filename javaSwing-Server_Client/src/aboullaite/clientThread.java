@@ -96,6 +96,17 @@ public class clientThread extends Thread {
 							}
 						}
 					}
+				/*
+				 *  Show current user info
+				 */
+				} else if(line.startsWith("/user")) {
+					synchronized (this) {
+						this.os.println("Current user Info");
+						for(int j = 0; j < maxClientsCount; j++) {
+							if(threads[j] != null && threads[j].clientName != null)
+								this.os.println(threads[j].clientName + " InetAddress : "+threads[j].clientSocket.getInetAddress());
+						}
+					}
 				} else {
 					/*
 					 * The message is public, broadcast it to all other clients.
